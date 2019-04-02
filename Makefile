@@ -45,10 +45,12 @@ $(DEST)/%.o: $(SRC)/%.c $(INC)/%.h
 $(DEST)/%.o: $(SRC)/%.s $(INC)/%.h
 	$(CC) $(COMP_FLAGS) $< -o $@
 
-# These 2 files are kidna exceptional - we don't need headers for them
+# These 3 files are kidna exceptional - we don't need headers for them
 $(DEST)/main.o: $(SRC)/main.c
 	$(CC) $(COMP_FLAGS) $< -o $@
 $(DEST)/startup_stm32f091xc.o: $(SRC)/startup_stm32f091xc.s
+	$(CC) $(COMP_FLAGS) $< -o $@
+$(DEST)/stm32f0xx_it.o: $(SRC)/stm32f0xx_it.c
 	$(CC) $(COMP_FLAGS) $< -o $@
 
 .PHONY: con debug flash clean
